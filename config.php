@@ -14,7 +14,8 @@ function get_config($lib) {
 	$c['per_page'] = 4;
 
 	// Library independent settings
-	$c['smarty_path'] = '/home/lib/Smarty-2.6.26/libs/Smarty.class.php';
+	// $c['smarty_path'] = '/home/lib/Smarty-2.6.26/libs/Smarty.class.php';
+	$c['smarty_path'] = '/usr/share/php/smarty/Smarty.class.php';
 	
 	//Libraries
 	$l = array();
