@@ -3,3 +3,6 @@ tmpl/templates_c/*
 
 # Temporary files produced by Kate
 *~
+
+# Ignore alle the Glitre files
+glitre/*
