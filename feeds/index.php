@@ -1,14 +1,10 @@
 <?php
 
-$feeds = array();
-
-$feeds['hig'] = array(
-	'url' => 'http://blog.hig.no/endnote/feed/', 
-);
+include_once('../config.php');
 
 // Make sure SimplePie is included. You may need to change this to match the location of simplepie.inc.
 require_once('SimplePie-1.2/simplepie.inc');
- 
+
 // We'll process this feed with all of the default options.
 $feed = new SimplePie();
 
