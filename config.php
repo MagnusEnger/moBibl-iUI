@@ -9,6 +9,7 @@ function get_config($lib) {
   $c = array();
 
   $c['debug'] = true;
+  $c['debug_feeds'] = true;
 
   $c['max_records'] = 11;
   $c['per_page'] = 4;

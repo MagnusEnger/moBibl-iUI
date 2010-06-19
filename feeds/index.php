@@ -1,12 +1,20 @@
 <?php
 
-if !isset($_GET['feed']){
+if (!isset($_GET['feed'])){
   exit;
 }
 
-($lib, $feed) = explode('_', $_GET['feed']);
+list($lib, $feed_id) = explode('_', $_GET['feed']);
 include_once('../config.php');
 $config = get_config('hig');
+
+// Are we in debug mode?
+if ($config['debug_feeds']) {
+
+  echo($config['lib']['feeds'][$feed_id]['url']);
+  exit;
+
+}
 
 // Make sure SimplePie is included. You may need to change this to match the location of simplepie.inc.
 require_once('SimplePie-1.2/simplepie.inc');
@@ -17,14 +25,7 @@ $feed = new SimplePie();
 $feed->set_cache_location('feedcache/');
  
 // Set which feed to process.
-$feed->set_feed_url($config['lib']['feeds'][$feed]);
- 
-if (getenv('MOBIBLDEBUG') == 1) {
-
-  echo($config['lib']['feeds'][$feed]);
-  exit;
-
-}
+$feed->set_feed_url($config['lib']['feeds'][$feed_id]['url']);
 
 // Run SimplePie.
 $feed->init();
