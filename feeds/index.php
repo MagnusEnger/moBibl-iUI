@@ -11,7 +11,12 @@ $config = get_config('hig');
 // Are we in debug mode?
 if ($config['debug_feeds']) {
 
-  echo($config['lib']['feeds'][$feed_id]['url']);
+  echo('<p>' . $config['lib']['feeds'][$feed_id]['url'] . '</p>');
+  echo('<ul class="edgetoedge">');
+  echo('<li class="arrow feeditem"><a href="#item_1">test 1</a></li><div id="item_1" style="display: none;"><div><h2>Tittel 1</h2><p>Bla, bla...</p></div><a style="margin:0 10px;color:rgba(0,0,0,.9)" href="#" class="whiteButton goback">Tilbake</a></div>');
+  echo('<li class="arrow feeditem"><a href="#item_1">test 2</a></li><div id="item_2" style="display: none;"><div><h2>Tittel 2</h2><p>Bla, bla...</p></div><a style="margin:0 10px;color:rgba(0,0,0,.9)" href="#" class="whiteButton goback">Tilbake</a></div>');
+  echo('<li class="arrow feeditem"><a href="#item_1">test 3</a></li><div id="item_3" style="display: none;"><div><h2>Tittel 3</h2><p>Bla, bla...</p></div><a style="margin:0 10px;color:rgba(0,0,0,.9)" href="#" class="whiteButton goback">Tilbake</a></div>');
+  echo('</ul>');
   exit;
 
 }
