@@ -1,1 +1,5 @@
+# Compiled Smarty-templates
 tmpl/templates_c/*
+
+# Temporary files produced by Kate
+*~
