@@ -13,10 +13,10 @@ $.jQTouch({
 
 $(document).ready(function(){
 
-	$('#nytt').bind('pageAnimationEnd', function(e, info){
+	$('#hig_news').bind('pageAnimationEnd', function(e, info){
 		if (!$(this).data('loaded')) {  // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
 	    	$(this).append($('<div>Henter...</div>').         // Append a placeholder in case the remote HTML takes its sweet time making it back
-	    		load('feeds/', function() {        // Overwrite the "Loading" placeholder text with the remote HTML
+	    		load('feeds/?feed=hig_news', function() {        // Overwrite the "Loading" placeholder text with the remote HTML
 	    			$(this).parent().data('loaded', true);  // Set the 'loaded' var to true so we know not to re-load the HTML next time the #callback div animation ends
 	    	}));
 	    }
