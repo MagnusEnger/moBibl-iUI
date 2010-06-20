@@ -14,23 +14,26 @@ $.jQTouch({
 $(document).ready(function(){
 
 	$('#hig_news').bind('pageAnimationEnd', function(e, info){
-		if (!$(this).data('loaded')) {  // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
+	    if (!$(this).data('loaded')) {  // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
+	    	$.get('feeds/index.php', { feed: 'hig_news' }, function(html) { $('#hig_news').append(html) });
+		$.get('feeds/index.php', { feed: 'hig_news', part: 'main' }, function(html) { $('body').append(html) });
+		$(this).data('loaded', true);
+	    }
+	});
+	
+	$('#debug').bind('pageAnimationEnd', function(e, info){
+	    if (!$(this).data('loaded')) {  // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
 	    	$(this).append($('<div>Henter...</div>').         // Append a placeholder in case the remote HTML takes its sweet time making it back
-	    		load('feeds/?feed=hig_news', function() {        // Overwrite the "Loading" placeholder text with the remote HTML
+	    		load('debug.php', function() {        // Overwrite the "Loading" placeholder text with the $.get('feeds/index.php', { feed: 'hig_news', part: 'main' }, function(html) { $('body').append(html) })remote HTML
 	    			$(this).parent().data('loaded', true);  // Set the 'loaded' var to true so we know not to re-load the HTML next time the #callback div animation ends
 	    	}));
 	    }
 
 	});
-	
-	$('#debug').bind('pageAnimationEnd', function(e, info){
-		if (!$(this).data('loaded')) {  // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
-	    	$(this).append($('<div>Henter...</div>').         // Append a placeholder in case the remote HTML takes its sweet time making it back
-	    		load('debug.php', function() {        // Overwrite the "Loading" placeholder text with the remote HTML
-	    			$(this).parent().data('loaded', true);  // Set the 'loaded' var to true so we know not to re-load the HTML next time the #callback div animation ends
-	    	}));
-	    }
 
+	$("#test").click(function(){
+	    	// $(this).('.content')
+		alert('c');
 	});
 	
 });
