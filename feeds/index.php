@@ -13,9 +13,9 @@ if ($config['debug_feeds']) {
 
   if (!empty($_GET['part'])) {
 
-    echo('<div id="hignewsitem1"><div class="toolbar"><h1>Nyhet 1</h1><a class="button back" href="#">Tilbake</a></div><p>Bla, bla, bla...</p></div>');
-    echo('<div id="hignewsitem2"><div class="toolbar"><h1>Nyhet 2</h1><a class="button back" href="#">Tilbake</a></div><p>Bla, bla, bla...</p></div>');
-    echo('<div id="hignewsitem3"><div class="toolbar"><h1>Nyhet 3</h1><a class="button back" href="#">Tilbake</a></div><p>Bla, bla, bla...</p></div>');
+    echo('<div id="hignewsitem1"><div class="toolbar"><h1>Nyhet 1</h1><a class="button back" href="#">Tilbake</a></div><div class="content"><p>Bla, bla, bla...</p></div></div>');
+    echo('<div id="hignewsitem2"><div class="toolbar"><h1>Nyhet 2</h1><a class="button back" href="#">Tilbake</a></div><div class="content"><p>Bla, bla, bla...</p></div></div>');
+    echo('<div id="hignewsitem3"><div class="toolbar"><h1>Nyhet 3</h1><a class="button back" href="#">Tilbake</a></div><div class="content"><p>Bla, bla, bla...</p></div></div>');
     exit;
 
   } else {
