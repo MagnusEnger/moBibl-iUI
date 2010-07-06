@@ -4,7 +4,7 @@ include('config.php');
 $config = get_config('hig');
 include('include/setup.php');
 
-$smarty->assign('name', $config['lib']['name']);
+$smarty->assign('config', $config);
 
 if (!empty($_GET['q'])) {
 

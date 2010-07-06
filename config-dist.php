@@ -25,7 +25,14 @@ function get_config($lib) {
     'records_max' => 11, 
     'records_per_page' => 4, 
     'system' => 'bibsys',
-    'z3950'  => 'z3950.bibsys.no:2100/HIG', 
+    'z3950'  => 'z3950.bibsys.no:2100/HIG',
+    'frontpage' => '<ul>
+	<li>Åpningstider:
+	<li>Man. - tor.: 08.30-18.00</li>
+	<li>Fre.: 08:30-15.30</li>
+	<li>Telefon: <a href="tel:+4761135131">+47 61 13 51 31</a></li>
+	<li>E-post: <a href="mailto:bibliotek@hig.no">bibliotek@hig.no</a></li>
+	</ul>',  
     'feeds' => array(
       'news' => array(
 	'title' => 'Nytt fra biblioteket', 

@@ -1,18 +1,18 @@
-{include file='html_header.tmpl' title=$name}
+{include file='html_header.tmpl' title=$config.lib.name}
 
 <div id="home">
 	<div class="toolbar">
-	<h1>{$name}</h1>
+	<h1>{$config.lib.name}</h1>
 	</div>
 	<ul class="edgetoedge">
 		<li class="arrow"><a href="#sok">Søk i katalogen</a></li>
-		<li class="arrow"><a href="#praktisk">Praktisk informasjon</a></li>
 		<li class="arrow"><a href="#hig_news">Nytt fra biblioteket</a></li>
 		<li class="arrow"><a href="#tilvekst">Tilvekstlister</a></li>
 		<li class="arrow"><a href="#lenker">Lenker</a></li>
 		<li class="arrow"><a href="#inst">Innstillinger</a></li>
 		<li class="arrow"><a href="#debug">Debug</a></li>
 	</ul>
+	{$config.lib.frontpage}
 </div>
 
 <div id="sok">
@@ -30,25 +30,6 @@
 		<input type="submit" value="Søk" /
 		</p>
 		</form>
-	</div>
-</div>
-
-<div id="praktisk">
-	<div class="toolbar">
-	<h1>Praktisk informasjon</h1>
-	<a class="button back" href="#">Tilbake</a>
-	</div>
-	<div>
-	<ul>
-	<li>Åpningstider:
-		<ul>
-		<li>Man. - tor.: 08.30-18.00</li>
-		<li>Fre.: 08:30-15.30</li>
-		</ul>
-	</li>
-	<li>Telefon: +47 61 13 51 31 </li>
-	<li>E-post: <a href="bibliotek@hig.no">bibliotek@hig.no</a></li>
-	</ul>
 	</div>
 </div>
 
