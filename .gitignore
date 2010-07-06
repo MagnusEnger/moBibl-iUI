@@ -4,5 +4,9 @@ tmpl/templates_c/*
 # Temporary files produced by Kate
 *~
 
+# Ignore config.php
+# config-dist.php should be renamed config.php after installation
+config.php
+
 # Ignore alle the Glitre files
 glitre/*
