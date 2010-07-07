@@ -13,10 +13,11 @@ $.jQTouch({
 
 $(document).ready(function(){
 
-	$('#hig_news').bind('pageAnimationEnd', function(e, info){
+	$('.feed').bind('pageAnimationEnd', function(e, info){
 	    if (!$(this).data('loaded')) {  // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
-	    	$.get('feeds/index.php', { feed: 'hig_news' }, function(html) { $('#hig_news').append(html) });
-		$.get('feeds/index.php', { feed: 'hig_news', part: 'main' }, function(html) { $('body').append(html) });
+		var elem = $(this).attr('id');
+	    	$.get('feeds/index.php', { feed: elem }, function(html) { $('#' + elem).append(html) });
+		$.get('feeds/index.php', { feed: elem, part: 'main' }, function(html) { $('body').append(html) });
 		$(this).data('loaded', true);
 	    }
 	});
