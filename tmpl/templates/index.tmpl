@@ -6,9 +6,9 @@
 	</div>
 	<ul class="edgetoedge">
 		<li class="arrow"><a href="#sok">Søk i katalogen</a></li>
-		<li class="arrow"><a href="#hig_news">Nytt fra biblioteket</a></li>
-		<li class="arrow"><a href="#tilvekst">Tilvekstlister</a></li>
-		<li class="arrow"><a href="#lenker">Lenker</a></li>
+		{foreach from=$config.lib.nav key=id item=nav}
+		<li class="arrow"><a href="#{$id}">{$nav.title}</a></li>
+		{/foreach}
 		<li class="arrow"><a href="#inst">Innstillinger</a></li>
 		<li class="arrow"><a href="#debug">Debug</a></li>
 	</ul>
@@ -33,32 +33,14 @@
 	</div>
 </div>
 
-<div id="hig_news">
+{foreach from=$config.lib.nav key=id item=nav}
+<div id="{$id}">
 	<div class="toolbar">
-	<h1>Nytt fra biblioteket...</h1>
+	<h1>{$nav.title}</h1>
 	<a class="button back" href="#">Tilbake</a>
 	</div>
 </div>
-
-<div id="tilvekst">
-	<div class="toolbar">
-	<h1>Tilvekstlister</h1>
-	<a class="button back" href="#">Tilbake</a>
-	</div>
-	<div>
-	<p>Nye bøker i biblioteket</p>
-	</div>
-</div>
-
-<div id="lenker">
-	<div class="toolbar">
-	<h1>Lenker</h1>
-	<a class="button back" href="#">Tilbake</a>
-	</div>
-	<div>
-	<p>Lenker, fra RSS</p>
-	</div>
-</div>
+{/foreach}
 
 <div id="inst">
 	<div class="toolbar">

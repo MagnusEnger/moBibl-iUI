@@ -33,8 +33,9 @@ function get_config($lib) {
 	<li>Telefon: <a href="tel:+4761135131">+47 61 13 51 31</a></li>
 	<li>E-post: <a href="mailto:bibliotek@hig.no">bibliotek@hig.no</a></li>
 	</ul>',  
-    'feeds' => array(
-      'news' => array(
+    'nav' => array(
+      'nytt' => array(
+	'type' => 'feed', 
 	'title' => 'Nytt fra biblioteket', 
 	'url' => 'http://blog.hig.no/endnote/feed/'
       )
