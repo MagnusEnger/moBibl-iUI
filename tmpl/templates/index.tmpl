@@ -10,7 +10,9 @@
 		<li class="arrow"><a href="#{$config.lib.lib}_{$id}">{$nav.title}</a></li>
 		{/foreach}
 		<li class="arrow"><a href="#inst">Innstillinger</a></li>
+		{if $config.debug}
 		<li class="arrow"><a href="#debug">Debug</a></li>
+		{/if}
 	</ul>
 	{$config.lib.frontpage}
 </div>
@@ -52,6 +54,7 @@
 	</div>
 </div>
 
+{if $config.debug}
 <div id="debug" class="section">
 	<div class="toolbar">
 	<h1>Debug</h1>
@@ -60,5 +63,6 @@
 	<div>
 	</div>
 </div>
+{/if}
 
 {include file='html_footer.tmpl'}
