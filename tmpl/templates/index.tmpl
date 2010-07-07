@@ -34,7 +34,7 @@
 </div>
 
 {foreach from=$config.lib.nav key=id item=nav}
-<div id="{$id}">
+<div id="{$id}" class="{$nav.type}">
 	<div class="toolbar">
 	<h1>{$nav.title}</h1>
 	<a class="button back" href="#">Tilbake</a>
@@ -42,17 +42,17 @@
 </div>
 {/foreach}
 
-<div id="inst">
+<div id="inst" class="section">
 	<div class="toolbar">
 	<h1>Innstillinger</h1>
 	<a class="button back" href="#">Tilbake</a>
 	</div>
-	<div>
+	<div class="content">
 	<p>Endre innstillinger</p>
 	</div>
 </div>
 
-<div id="debug">
+<div id="debug" class="section">
 	<div class="toolbar">
 	<h1>Debug</h1>
 	<a class="button back" href="#">Tilbake</a>
