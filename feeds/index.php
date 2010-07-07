@@ -6,7 +6,7 @@ if (!isset($_GET['feed'])){
 
 list($lib, $feed_id) = explode('_', $_GET['feed']);
 include_once('../config.php');
-$config = get_config('hig');
+$config = get_config($lib);
 
 // Are we in debug mode?
 if ($config['debug_feeds']) {
@@ -47,7 +47,7 @@ $feed = new SimplePie();
 $feed->set_cache_location('feedcache/');
  
 // Set which feed to process.
-$feed->set_feed_url($config['lib']['feeds'][$feed_id]['url']);
+$feed->set_feed_url($config['lib']['nav'][$feed_id]['url']);
 
 // Run SimplePie.
 $feed->init();
