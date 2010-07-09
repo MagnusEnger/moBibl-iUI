@@ -55,21 +55,22 @@ $feed->init();
 // This makes sure that the content is sent to the browser as text/html and the UTF-8 character set (since we didn't change it).
 $feed->handle_content_type();
 
-echo('<ul class="edgetoedge">');
-
 $i = 0;
 $items = '';
 
+$menu = '<ul class="edgetoedge">';
 foreach ($feed->get_items() as $item) {
  
 	$permalink = $item->get_permalink();
+	// Turn the permalink into a unique id
+	$id = md5($permalink);
 	$title = $item->get_title();
 	$description = $item->get_description();
 	$date = $item->get_date('j F Y, H.i');
 	
-	echo('<li class="arrow feeditem"><a href="#item_' . $i . '">' . "$title ($date)" . '</a></li>');
+	$menu .= '<li class="arrow feeditem"><a href="' . $id . '">' . "$title ($date)" . '</a></li>';
 	
-	$items .= "<div id=\"item_$i\" style=\"display: none;\">
+	$items .= "<div id=\"$id\" style=\"display: none;\">
             <div>
                 <h2>$title</h2>  
                 $description          
@@ -80,9 +81,12 @@ foreach ($feed->get_items() as $item) {
 	$i++;
 	 
 }
+$menu .= '</ul>';
 
-echo('</ul>');
-
-echo($items);
+if (!empty($_GET['part'])) {
+  echo($items);
+} else {
+  echo($menu);
+}
 
 ?>
