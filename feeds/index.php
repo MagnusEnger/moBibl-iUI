@@ -20,13 +20,6 @@ if ($config['debug_feeds']) {
 
   } else {
 
-    // echo('<p>' . $config['lib']['feeds'][$feed_id]['url'] . '</p>');
-    // echo('<div id="hig_news">');
-    // echo('<div class="toolbar">');
-    // echo('<h1>Nytt fra biblioteket...</h1>');
-    // echo('<a class="button back" href="#">Tilbake</a>');
-    // echo('</div>');
-    // echo('</div>');
     echo('<ul class="rounded">');
     echo('<li><a class="flip" href="#hignewsitem1">test 1</a></li>');
     echo('<li><a class="flip" href="#hignewsitem2">test 2</a></li>');
