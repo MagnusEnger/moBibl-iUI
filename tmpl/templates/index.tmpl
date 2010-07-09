@@ -23,15 +23,12 @@
 	<a class="button back" href="#">Tilbake</a>
 	</div>
 	<div>
-	    <form method="get" action="search.php">
-		<p>
-		<input type="text" name="q" value="" />
-		<input type="hidden" name="lib" value="hig" />
-		<input type="hidden" name="sorter" value="aar" />
-		<input type="hidden" name="orden" value="synk" />
-		<input type="submit" value="Søk" /
-		</p>
-		</form>
+	    <form method="post">
+		<ul>
+		<li><input placeholder="Forfatter, tittel, emne..." type="text" name="q" value="" /></li>
+		<li><input type="submit" value="Søk" /></li>
+		</ul>
+	    </form>
 	</div>
 </div>
 
