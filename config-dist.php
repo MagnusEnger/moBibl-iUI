@@ -4,7 +4,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . '/home/lib/pear/PEAR');
 
 // TODO: This should be replaced by calls to a database! 
 
-function get_config($lib) {
+function get_config($lib=false) {
 
   $c = array();
 
@@ -18,9 +18,11 @@ function get_config($lib) {
   // $c['smarty_path'] = '/home/lib/Smarty-2.6.26/libs/Smarty.class.php';
   $c['smarty_path'] = '/usr/share/php/smarty/Smarty.class.php';
 
-  $c['lib'] = get_lib($lib);
-  // Save the short form of the chosen library
-  $c['lib']['lib'] = $lib;
+  if ($lib) {
+    $c['lib'] = get_lib($lib);
+    // Save the short form of the chosen library
+    $c['lib']['lib'] = $lib;
+  }
 
   return $c;
 
@@ -61,7 +63,7 @@ function get_lib($lib=false){
     )
   );
   $l['deich'] = array(
-    'name'  => 'Deichmanske',
+    'name'  => 'Deichmanske bibliotek',
     'name_short' => 'Deichmanske',
     'records_max' => 11, 
     'records_per_page' => 4, 
@@ -70,7 +72,7 @@ function get_lib($lib=false){
     'theme' => 'apple', // apple, jqt
   );
   $l['pode'] = array(
-    'name'    => 'Pode', 
+    'name'    => 'Pode testkatalog', 
     'name_short' => 'Pode',
     'records_max' => 11, 
     'records_per_page' => 4, 

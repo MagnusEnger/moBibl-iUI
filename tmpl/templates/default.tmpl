@@ -1,0 +1,17 @@
+{include file='html_header.tmpl' title=$config.lib.name theme="apple"}
+
+<div id="choose" class="section">
+	<div class="toolbar">
+	<h1>moBibl</h1>
+	</div>
+	<div>
+        <h2>Velg bibliotek</h2>
+        <ul>
+        {foreach from=$libraries key=lid item=lib}
+          <li><a href="?lib={$lid}">{$lib.name}</a></li>
+        {/foreach}
+        </ul>
+	</div>
+</div>
+
+{include file='html_footer.tmpl'}
