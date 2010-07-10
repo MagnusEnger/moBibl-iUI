@@ -2,7 +2,7 @@
 
 <div id="home">
 	<div class="toolbar">
-	<h1>{$config.lib.name}</h1>
+	<h1>{$config.lib.name_short}</h1>
 	</div>
 	<ul class="edgetoedge">
 		<li class="arrow"><a href="#sok">Søk i katalogen</a></li>
@@ -51,7 +51,9 @@
 		<ul>
 		<li><p>Velg bibliotek</p>
 		       <select name="lib" id="lib">
-		       <option value="">Høgskolen i Gjøvik</option>
+		       {foreach from=$libraries key=lid item=lib}
+                         <option value="{$lid}">{$lib.name}</option>
+                       {/foreach}
 		    </select>
 		</li>
 		<li><p>Velg tema</p>

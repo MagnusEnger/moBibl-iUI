@@ -31,7 +31,8 @@ function get_lib($lib=false){
   //Libraries
   $l = array();
   $l['hig'] = array(
-    'name'  => 'HiG', 
+    'name'  => 'Høgskolen i Gjøvik',
+    'name_short' => 'HiG',  
     'records_max' => 11, 
     'records_per_page' => 4, 
     'system' => 'bibsys',
@@ -61,6 +62,7 @@ function get_lib($lib=false){
   );
   $l['deich'] = array(
     'name'  => 'Deichmanske',
+    'name_short' => 'Deichmanske',
     'records_max' => 11, 
     'records_per_page' => 4, 
     'system' => 'bibliofil',  
@@ -68,6 +70,7 @@ function get_lib($lib=false){
   );
   $l['pode'] = array(
     'name'    => 'Pode', 
+    'name_short' => 'Pode',
     'records_max' => 11, 
     'records_per_page' => 4, 
     'system'   => 'koha', 
