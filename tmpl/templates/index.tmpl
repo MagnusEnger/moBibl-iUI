@@ -46,16 +46,12 @@
 	<h1>Innstillinger</h1>
 	<a class="button back" href="#">Tilbake</a>
 	</div>
-	<div class="content">
+	<div>
 	    <form method="post">
 		<ul>
-		<li><p>Velg bibliotek</p>
-		       <select name="lib" id="lib">
-		       {foreach from=$libraries key=lid item=lib}
-                         <option value="{$lid}">{$lib.name}</option>
-                       {/foreach}
-		    </select>
-		</li>
+                <li class="arrow"><a href="#choose" class="flip">Velg et annet bibliotek</a></li>
+                </ul>
+                <ul>
 		<li><p>Velg tema</p>
 		       <select name="theme" id="theme">
 		       <option value="apple">Apple</option>
@@ -78,5 +74,19 @@
 	</div>
 </div>
 {/if}
+
+<div id="choose" class="section">
+	<div class="toolbar">
+	<h1>Velg bibliotek</h1>
+	<a class="button back" href="#">Tilbake</a>
+	</div>
+	<div>
+        <ul>
+        {foreach from=$libraries key=lid item=lib}
+          <li><a href="?lib={$lid}">{$lib.name}</a></li>
+        {/foreach}
+        </ul>
+	</div>
+</div>
 
 {include file='html_footer.tmpl'}

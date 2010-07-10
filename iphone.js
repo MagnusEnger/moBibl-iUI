@@ -39,13 +39,11 @@ $(document).ready(function(){
 });
 
 function saveSettings() {
-  localStorage.lib = $('#lib').val();
   localStorage.theme = $('#theme').val();
   jQT.goBack();
   return false;
 }
 
 function loadSettings() {
-  $('#lib').val(localStorage.lib);
   $('#theme').val(localStorage.theme);
 }

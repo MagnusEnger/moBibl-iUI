@@ -66,7 +66,8 @@ function get_lib($lib=false){
     'records_max' => 11, 
     'records_per_page' => 4, 
     'system' => 'bibliofil',  
-    'z3950'  => 'z3950.deich.folkebibl.no:210/data'
+    'z3950'  => 'z3950.deich.folkebibl.no:210/data', 
+    'theme' => 'apple', // apple, jqt
   );
   $l['pode'] = array(
     'name'    => 'Pode', 
@@ -75,7 +76,8 @@ function get_lib($lib=false){
     'records_per_page' => 4, 
     'system'   => 'koha', 
     'sru'      => 'http://torfeus.deich.folkebibl.no:9999/biblios', 
-    'item_url' => 'http://dev.bibpode.no/cgi-bin/koha/opac-detail.pl?biblionumber='
+    'item_url' => 'http://dev.bibpode.no/cgi-bin/koha/opac-detail.pl?biblionumber=',
+    'theme' => 'jqt', // apple, jqt
   );
 
   if ($lib) {

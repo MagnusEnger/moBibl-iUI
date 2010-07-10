@@ -1,25 +1,34 @@
 <?php
 
-include('config.php');
-$config = get_config('hig');
-include('include/setup.php');
+if (!empty($_GET['lib'])) {
 
-$smarty->assign('config', $config);
-$smarty->assign('libraries', get_lib());
+  include('config.php');
+  $config = get_config($_GET['lib']);
+  include('include/setup.php');
 
-if (!empty($_GET['q'])) {
+  $smarty->assign('config', $config);
+  $smarty->assign('libraries', get_lib());
 
-	$smarty->display('search.tmpl');
+  if (!empty($_GET['q'])) {
 
-} elseif(!empty($_GET['page'])) {
+	  $smarty->display('search.tmpl');
 
-	// Get the page from somewhere (RSS, HTML from database), based on $_GET['page']
-	$smarty->display('page.tmpl');
-	
+  } elseif(!empty($_GET['page'])) {
+
+	  // Get the page from somewhere (RSS, HTML from database), based on $_GET['page']
+	  $smarty->display('page.tmpl');
+	  
+  } else {
+
+	  $smarty->display('index.tmpl');
+	  
+  }
+
 } else {
 
-	$smarty->display('index.tmpl');
-	
+  // Display library choice
+  
+
 }
 
 ?>
