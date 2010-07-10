@@ -9,7 +9,7 @@
 		{foreach from=$config.lib.nav key=id item=nav}
 		<li class="arrow"><a href="#{$config.lib.lib}_{$id}">{$nav.title}</a></li>
 		{/foreach}
-		<li class="arrow"><a href="#inst">Innstillinger</a></li>
+		<li class="arrow"><a href="#settings">Innstillinger</a></li>
 		{if $config.debug}
 		<li class="arrow"><a href="#debug">Debug</a></li>
 		{/if}
@@ -41,7 +41,7 @@
 </div>
 {/foreach}
 
-<div id="inst" class="section">
+<div id="settings" class="section">
 	<div class="toolbar">
 	<h1>Innstillinger</h1>
 	<a class="button back" href="#">Tilbake</a>
@@ -50,12 +50,12 @@
 	    <form method="post">
 		<ul>
 		<li><p>Velg bibliotek</p>
-		       <select name="lib">
+		       <select name="lib" id="lib">
 		       <option value="">Høgskolen i Gjøvik</option>
 		    </select>
 		</li>
 		<li><p>Velg tema</p>
-		       <select name="theme">
+		       <select name="theme" id="theme">
 		       <option value="apple">Apple</option>
 		       <option value="jqt">JQT</option>
 		    </select>

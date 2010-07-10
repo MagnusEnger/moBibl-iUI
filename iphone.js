@@ -13,6 +13,10 @@ $.jQTouch({
 
 $(document).ready(function(){
 
+        // Saving settings triggers the saveSettings function
+	$('#settings form').submit(saveSettings);
+        $('#settings').bind('pageAnimationStart', loadSettings);
+
 	$('.feed').bind('pageAnimationEnd', function(e, info){
 	    if (!$(this).data('loaded')) {  // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
 		var elem = $(this).attr('id');
@@ -33,3 +37,15 @@ $(document).ready(function(){
 	});
 	
 });
+
+function saveSettings() {
+  localStorage.lib = $('#lib').val();
+  localStorage.theme = $('#theme').val();
+  jQT.goBack();
+  return false;
+}
+
+function loadSettings() {
+  $('#lib').val(localStorage.lib);
+  $('#theme').val(localStorage.theme);
+}
