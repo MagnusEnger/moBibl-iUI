@@ -5,7 +5,7 @@
 	<h1>{$config.lib.name_short}</h1>
 	</div>
 	<ul class="edgetoedge">
-		<li class="arrow"><a href="#sok">Søk i katalogen</a></li>
+		<li class="arrow"><a href="#search">Søk i katalogen</a></li>
 		{foreach from=$config.lib.nav key=id item=nav}
 		<li class="arrow"><a href="#{$config.lib.lib}_{$id}">{$nav.title}</a></li>
 		{/foreach}
@@ -17,7 +17,7 @@
 	{$config.lib.frontpage}
 </div>
 
-<div id="sok">
+<div id="search">
     <div class="toolbar">
 	<h1>Søk i katalogen</h1>
 	<a class="button back" href="#">Tilbake</a>
@@ -25,11 +25,12 @@
 	<div>
 	    <form method="post">
 		<ul>
-		<li><input placeholder="Forfatter, tittel, emne..." type="text" name="q" value="" /></li>
+		<li><input placeholder="Forfatter, tittel, emne..." type="text" id="q" name="q" value="" /></li>
 		<li><input type="submit" value="Søk" /></li>
 		</ul>
 	    </form>
 	</div>
+        <div id="searchresults"></div>
 </div>
 
 {foreach from=$config.lib.nav key=id item=nav}

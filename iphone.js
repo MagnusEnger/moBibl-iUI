@@ -13,6 +13,9 @@ $.jQTouch({
 
 $(document).ready(function(){
 
+	// Perform search
+	$('#search form').submit(getSearchResults);
+
         // Saving settings triggers the saveSettings function
 	$('#settings form').submit(saveSettings);
         $('#settings').bind('pageAnimationStart', loadSettings);
@@ -37,6 +40,15 @@ $(document).ready(function(){
 	});
 	
 });
+
+function getSearchResults() {
+
+  var q = $('#q').val();
+  // alert(q);
+  $.get('glitre/api/', { dummy: 'true', q: q }, function(html) { $('#searchresults').empty(); $('#searchresults').append(html); });
+  return false;
+
+}
 
 function saveSettings() {
   localStorage.theme = $('#theme').val();
