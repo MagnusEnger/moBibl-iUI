@@ -18,6 +18,16 @@ function get_config($lib) {
   // $c['smarty_path'] = '/home/lib/Smarty-2.6.26/libs/Smarty.class.php';
   $c['smarty_path'] = '/usr/share/php/smarty/Smarty.class.php';
 
+  $c['lib'] = get_lib($lib);
+  // Save the short form of the chosen library
+  $c['lib']['lib'] = $lib;
+
+  return $c;
+
+}
+
+function get_lib($lib=false){
+
   //Libraries
   $l = array();
   $l['hig'] = array(
@@ -26,7 +36,7 @@ function get_config($lib) {
     'records_per_page' => 4, 
     'system' => 'bibsys',
     'z3950'  => 'z3950.bibsys.no:2100/HIG',
-    'theme' => 'jqt', 
+    'theme' => 'apple', // apple, jqt
     'frontpage' => '<ul>
 	<li>Åpningstider:
 	<li>Man. - tor.: 08.30-18.00</li>
@@ -65,11 +75,10 @@ function get_config($lib) {
     'item_url' => 'http://dev.bibpode.no/cgi-bin/koha/opac-detail.pl?biblionumber='
   );
 
-  $c['lib'] = $l[$lib];
-  // Save the short form of the chosen library
-  $c['lib']['lib'] = $lib;
-
-  return $c;
+  if ($lib) {
+    return $l[$lib];
+  } 
+  return $l;
 
 }
 
