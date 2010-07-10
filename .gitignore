@@ -10,3 +10,6 @@ config.php
 
 # Ignore alle the Glitre files
 glitre/*
+
+# Ignore anything that starts with an underscore
+_*
