@@ -61,7 +61,7 @@ foreach ($feed->get_items() as $item) {
 	$description = $item->get_description();
 	$date = $item->get_date('j F Y, H.i');
 	
-	$menu .= '<li class="arrow feeditem"><a href="' . $id . '">' . "$title ($date)" . '</a></li>';
+	$menu .= '<li class="arrow feeditem"><a href="#' . $id . '">' . "$title ($date)" . '</a></li>';
 	
 	$items .= "<div id=\"$id\" style=\"display: none;\">
             <div>
