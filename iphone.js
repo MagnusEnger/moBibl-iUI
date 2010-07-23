@@ -44,8 +44,9 @@ $(document).ready(function(){
 function getSearchResults() {
 
   var q = $('#q').val();
-  $.get('glitre/api/', { dummy: 'true', q: q }, function(html) { $('#searchresults').empty(); $('#searchresults').append(html); });
-  $.get('glitre/api/', { dummy: 'true', format: 'full', q: q }, function(html) { $('body').append(html); });
+  // Use dummy: 'true' as argument to glitre/api/ to get back dummy data
+  $.get('glitre/api/', { q: q, format: 'plugin.mobibl' }, function(html) { $('#searchresults').empty(); $('#searchresults').append(html); });
+  $.get('glitre/api/', { q: q, format: 'plugin.mobiblfull' }, function(html) { $('body').append(html); });
   return false;
 
 }
