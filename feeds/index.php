@@ -64,10 +64,10 @@ foreach ($feed->get_items() as $item) {
 	$menu .= '<li class="arrow feeditem"><a href="#' . $id . '">' . "$title ($date)" . '</a></li>';
 	
 	$items .= "<div id=\"$id\" style=\"display: none;\">
-            <div>
-                <h2>$title</h2>  
-                $description          
-            </div>
+                <div class=\"toolbar\"><h1>$title</h1><a class=\"button back\" href=\"#\">Tilbake</a></div> 
+                <div class=\"content\"> 
+                $description
+                </div>          
             <a style=\"margin:0 10px;color:rgba(0,0,0,.9)\" href=\"#\" class=\"whiteButton goback\">Tilbake</a>
         </div>";
 	
