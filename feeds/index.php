@@ -31,6 +31,8 @@ if ($config['debug_feeds']) {
 
 }
 
+sleep(10);
+
 // Make sure SimplePie is included. You may need to change this to match the location of simplepie.inc.
 require_once('SimplePie-1.2/simplepie.inc');
 

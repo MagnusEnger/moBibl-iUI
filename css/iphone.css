@@ -6,3 +6,8 @@
   padding: 12px 10px 12px 10px;
   color: black;
 }
+
+#progress {
+  padding-top: 3em;
+  padding-left: 3em;
+}

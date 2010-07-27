@@ -26,7 +26,7 @@
 	    <form method="post">
 		<ul>
 		<li><input placeholder="Forfatter, tittel, emne..." type="text" id="q" name="q" value="" /></li>
-		<li><input type="submit" value="Søk" /></li>
+		<li id="searchformsubmit"><input type="submit" value="Søk" /></li>
 		</ul>
 	    </form>
 	</div>
@@ -39,6 +39,7 @@
 	<h1>{$nav.title}</h1>
 	<a class="button back" href="#">Tilbake</a>
 	</div>
+        <div id="feedprogresscontainer"></div>
 </div>
 {/foreach}
 
