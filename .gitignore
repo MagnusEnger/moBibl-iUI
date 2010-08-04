@@ -13,3 +13,11 @@ glitre/*
 
 # Ignore anything that starts with an underscore
 _*
+
+# Temp files from the feed reader
+feeds/feedcache/*
+*.spc
+
+# The file from Bolhylla
+public.txt
+bokhylla.inc

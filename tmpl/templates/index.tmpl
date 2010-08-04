@@ -10,6 +10,7 @@
 		<li class="arrow"><a href="#{$config.lib.lib}_{$id}">{$nav.title}</a></li>
 		{/foreach}
 		<li class="arrow"><a href="#choose">Velg bibliotek</a></li>
+		<li class="arrow"><a href="#bokhylla">Bokhylla</a></li>
 		{if $config.debug}
 		<li class="arrow"><a href="#debug">Debug</a></li>
 		{/if}
@@ -88,6 +89,19 @@
           <li><a href="?lib={$lid}">{$lib.name}</a></li>
         {/foreach}
         </ul>
+	</div>
+</div>
+
+<div id="bokhylla" class="section">
+	<div class="toolbar">
+	<h1>PDF fra Bokhylla.no</h1>
+	<a class="button back" href="#">Tilbake</a>
+	</div>
+	<div>
+	<ul id="bokhyllaul">
+	</ul>
+	<div id="bokhyllaprogresscontainer"></div>
+	<a style="margin:0 10px;color:rgba(0,0,0,.9)" href="#" class="whiteButton" id="bokhyllamore">Vis fler</a>
 	</div>
 </div>
 

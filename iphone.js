@@ -28,7 +28,6 @@ $.jQTouch({
 	icon: 'jqtouch.png',
 	statusBar: 'black-translucent',
 	preloadImages: [
-		'themes/jqt/img/chevron_white.png',
 		'/mobibl/img/progress.gif'
 		 ]
 });
@@ -51,6 +50,25 @@ $(document).ready(function(){
 		$.get('feeds/index.php', { feed: elem, part: 'main' }, function (html) { $('body').append(html); });
 		$(this).data('loaded', true);
 	    }
+	});
+
+ 	// Bokhylla
+	$('#bokhylla').bind('pageAnimationEnd', function(e, info){
+		// Make sure this only happens the first time we show this page
+		if (!$(this).data('bokhyllainit')) {
+		   if (!$(this).data('pagecounter')) {  
+				$(this).data('pagecounter', 0);
+		    }
+	        $('#bokhyllaprogresscontainer').append(progressindicator);
+	        $.get('bokhylla/index.php', { page: $(this).data('pagecounter') }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
+	        $(this).data('pagecounter', $(this).data('pagecounter') + 1);
+	        $(this).data('bokhyllainit', true);
+		}
+	});
+	$('#bokhyllamore').click(function() {
+  		$('#bokhyllaprogresscontainer').append(progressindicator);
+	    $.get('bokhylla/index.php', { page: $('#bokhylla').data('pagecounter') }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
+	    $('#bokhylla').data('pagecounter', $('#bokhylla').data('pagecounter') + 1);
 	});
 	
 /*
