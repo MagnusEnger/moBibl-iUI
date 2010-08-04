@@ -58,7 +58,19 @@ foreach my $bokhyllaline (@bokhylla) {
 	# Take care of any ' in $title or $creator
 	$title =~ s/'//g;
 	$creator =~ s/'//g;
-	print "'", '<li><a href="http://www.nb.no/utlevering/pdfbook?id=' . $urnfrag . '">' . $title . ' : ' . $creator . ' (' . $pages . ' s.)</a></li>', "', ", "\n";
+	print "'", '<li><a href="http://www.nb.no/utlevering/pdfbook?id=' . $urnfrag . '">';
+	if ($title) { 
+		print $title;
+	} else {
+		print '[Uten tittel]';	
+	}
+	if ($creator) {
+		print ' / ' . $creator;	
+	}
+	if ($pages) {
+		print ' (' . $pages . ' s.)';
+	}
+	print '</a></li>', "', ", "\n";
 }
 
 # End PHP array

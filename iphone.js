@@ -70,6 +70,10 @@ $(document).ready(function(){
 	    $.get('bokhylla/index.php', { page: $('#bokhylla').data('pagecounter') }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
 	    $('#bokhylla').data('pagecounter', $('#bokhylla').data('pagecounter') + 1);
 	});
+	$('#bokhyllarand').click(function() {
+  		$('#bokhyllaprogresscontainer').append(progressindicator);
+	    $.get('bokhylla/index.php', { rand: 'true' }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
+	});
 	
 /*
         // Debug
