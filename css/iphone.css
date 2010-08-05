@@ -11,3 +11,8 @@
   padding-top: 3em;
   padding-left: 3em;
 }
+
+.searchresult {
+  overflow: visible;
+  white-space: normal;
+}
