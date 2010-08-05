@@ -58,7 +58,7 @@ foreach my $bokhyllaline (@bokhylla) {
 	# Take care of any ' in $title or $creator
 	$title =~ s/'//g;
 	$creator =~ s/'//g;
-	print "'", '<li><a href="http://www.nb.no/utlevering/pdfbook?id=' . $urnfrag . '">';
+	print "'", '<li><a href="http://www.nb.no/utlevering/pdfbook?id=' . $urnfrag . '" class="searchresult">';
 	if ($title) { 
 		print $title;
 	} else {
