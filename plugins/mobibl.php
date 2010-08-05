@@ -52,7 +52,7 @@ function get_basic_info($record) {
 	
 	$id = md5($_GET['library'] . $bibid);
 
-    $out = '<li><a class="searchresult" href="#' . $id . '">';
+    $out = '<li class="arrow flip"><a class="searchresult" href="#' . $id . '">';
     
     // Title
     if ($record->getField("245") && $record->getField("245")->getSubfield("a")) {
@@ -63,20 +63,20 @@ function get_basic_info($record) {
     	$out .= '[Uten tittel]';	
     }
     if ($record->getField("245") && $record->getField("245")->getSubfield("b")) {
-    	$out .= ' : ' . marctrim($record->getField("245")->getSubfield("b")) . "\n";
+    	$out .= ' : ' . marctrim($record->getField("245")->getSubfield("b"));
     }
     if ($record->getField("245") && $record->getField("245")->getSubfield("c")) {
-    	$out .= ' / ' . marctrim($record->getField("245")->getSubfield("c")) . "\n";
+    	$out .= ' / ' . marctrim($record->getField("245")->getSubfield("c"));
     }
     // Publication data
     if ($record->getField("260")) {
     	// Year
     	if ($record->getField("260")->getSubfield("c")) {
-    		$out .= ' (' . marctrim($record->getField("260")->getSubfield("c")) . ")\n";
+    		$out .= ' (' . marctrim($record->getField("260")->getSubfield("c")) . ')';
     	}
     }
     
-    $out .= '</li>';
+    $out .= '</a></li>';
    	
     return $out;
 	
