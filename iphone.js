@@ -75,18 +75,16 @@ $(document).ready(function(){
 	    $.get('bokhylla/index.php', { rand: 'true' }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
 	});
 	
-/*
+
         // Debug
 	$('#debug').bind('pageAnimationEnd', function(e, info){
 	    if (!$(this).data('loaded')) {  // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
-                        $(this).append($('<div id="progress">Henter...</div>').         // Append a placeholder in case the remote HTML takes its sweet time making it back
-                         load('debug.php', function() {        // Overwrite the "Loading" placeholder text with the $.get('feeds/index.php', { feed: 'hig_news', part: 'main' }, function(html) { $('body').append(html) })remote HTML
+                        $(this).load('debug.php', function() {        // Overwrite the "Loading" placeholder text with the $.get('feeds/index.php', { feed: 'hig_news', part: 'main' }, function(html) { $('body').append(html) })remote HTML
                          $(this).parent().data('loaded', true);  // Set the 'loaded' var to true so we know not to re-load the HTML next time the #callback div animation ends
-                }));
-                $('#progress').remove();
+                });
 	    }
 	});
-*/	
+	
 });
 
 // Thanks to: http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html
