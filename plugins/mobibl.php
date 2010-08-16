@@ -21,18 +21,26 @@ along with Glitre.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-function format($marcxml) {
+function format($records) {
 
-	require('File/MARCXML.php');
-	$records = new File_MARCXML($marcxml, File_MARC::SOURCE_STRING);
+	// require('File/MARCXML.php');
+	// $records = new File_MARCXML($marcxml, File_MARC::SOURCE_STRING);
 	
-	$out = '<ul>';
-	while ($rec = $records->next()) {
-		$out .= get_basic_info($rec);
+	$out = '<p>Treff: ' . count($records) . '</p>';
+	$list = '';
+	$count = 0;
+	foreach ($records as $rec) {
+		$list .= get_basic_info($rec['marcobj']);
+		$count++;
 	}
-	$out .= '</ul>';
+	$out = '<p>Treff: ' . $count . '</p>';
+	$out .= '<ul>' . $list . '</ul>';
 	
-	return $out;
+	$ret = array(
+		'data' => $out, 
+		'content_type' => 'text/html'
+	);	
+	return $ret;;
 
 }
 
