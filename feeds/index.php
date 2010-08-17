@@ -4,62 +4,26 @@ if (!isset($_GET['feed'])){
   exit;
 }
 
-list($lib, $feed_id) = explode('_', $_GET['feed']);
-include_once('../config.php');
-$config = get_config($lib);
+// TODO: Check that $_GET['feed'] only contains legal chars
 
-// Are we in debug mode?
-if ($config['debug_feeds']) {
+require_once('../config.php');
+require_once('../inc.db.php');
+$config = get_lib();
+$dbconfig = get_db_config();
+$db = db_open($dbconfig['hostname'], $dbconfig['user'], $dbconfig['database'], $dbconfig['password']);
 
-  if (!empty($_GET['part'])) {
+$sql = 'SELECT * FROM feeditems WHERE feed_key = "' . $_GET['feed'] . '" ORDER BY date DESC LIMIT 10';
+$dbitems = db_execute_query($sql, $db);
 
-    echo('<div id="hignewsitem1"><div class="toolbar"><h1>Nyhet 1</h1><a class="button back" href="#">Tilbake</a></div><div class="content"><p>Bla, bla, bla...</p></div></div>');
-    echo('<div id="hignewsitem2"><div class="toolbar"><h1>Nyhet 2</h1><a class="button back" href="#">Tilbake</a></div><div class="content"><p>Bla, bla, bla...</p></div></div>');
-    echo('<div id="hignewsitem3"><div class="toolbar"><h1>Nyhet 3</h1><a class="button back" href="#">Tilbake</a></div><div class="content"><p>Bla, bla, bla...</p></div></div>');
-    exit;
-
-  } else {
-
-    echo('<ul class="rounded">');
-    echo('<li><a class="flip" href="#hignewsitem1">test 1</a></li>');
-    echo('<li><a class="flip" href="#hignewsitem2">test 2</a></li>');
-    echo('<li><a class="flip" href="#hignewsitem3">test 3</a></li>');
-    echo('</ul>');
-    exit;
-
-  }
-
-}
-
-// Make sure SimplePie is included. You may need to change this to match the location of simplepie.inc.
-require_once('SimplePie-1.2/simplepie.inc');
-
-// We'll process this feed with all of the default options.
-$feed = new SimplePie();
-
-$feed->set_cache_location('feedcache/');
- 
-// Set which feed to process.
-$feed->set_feed_url($config['lib']['nav'][$feed_id]['url']);
-
-// Run SimplePie.
-$feed->init();
- 
-// This makes sure that the content is sent to the browser as text/html and the UTF-8 character set (since we didn't change it).
-$feed->handle_content_type();
-
-$i = 0;
 $items = '';
-
 $menu = '<ul class="edgetoedge">';
-foreach ($feed->get_items() as $item) {
+while ($item = mysql_fetch_assoc($dbitems)) {
  
-	$permalink = $item->get_permalink();
-	// Turn the permalink into a unique id
-	$id = md5($permalink);
-	$title = $item->get_title();
-	$description = $item->get_description();
-	$date = $item->get_date('d.m.Y, \k\l. H.i');
+	$permalink = $item['permalink'];
+	$id = $item['hash_id'];
+	$title = $item['title'];
+	$description = $item['description'];
+	$date = $item['date'];
 	
 	$menu .= '<li class="arrow feeditem"><a href="#' . $id . '">' . "$title ($date)" . '</a></li>';
 	
