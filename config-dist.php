@@ -28,6 +28,18 @@ function get_config($lib=false) {
 
 }
 
+function get_db_config() {
+
+  $db = array(
+    'hostname' => 'localhost', 
+    'user' => 'your_db_user', 
+    'database' => 'your_db_name',
+    'password' => 'your_password'
+  );
+  return $db;
+	
+}
+
 function get_lib($lib=false){
 
   //Libraries
