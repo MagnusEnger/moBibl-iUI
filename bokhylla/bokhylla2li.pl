@@ -59,6 +59,7 @@ foreach my $bokhyllaline (@bokhylla) {
 	$title =~ s/'//g;
 	$creator =~ s/'//g;
 	print "'", '<li><a href="http://www.nb.no/utlevering/pdfbook?id=' . $urnfrag . '" class="searchresult">';
+	print '<img src="http://div.libriotech.no/famfamfam/silk/page_white_acrobat.png" alt="PDF" title="PDF" /> ';
 	if ($title) { 
 		print $title;
 	} else {
