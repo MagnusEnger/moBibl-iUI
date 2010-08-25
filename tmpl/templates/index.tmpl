@@ -23,15 +23,14 @@
 	<h1>Søk i katalogen</h1>
 	<a class="button back" href="#">Tilbake</a>
 	</div>
-	<div>
-	    <form method="post">
+	    <form method="post" id="searchform">
 		<ul>
 		<li><input placeholder="Forfatter, tittel, emne..." type="text" id="q" name="q" value="" /></li>
 		<li id="searchformsubmit"><input type="submit" value="Søk" /></li>
 		</ul>
 	    </form>
-	</div>
-        <div id="searchresults"></div>
+	<div id="searchcontent"></div>
+	<a style="margin:0 10px;color:rgba(0,0,0,.9);display:none;" href="#" class="whiteButton" id="searchmore">Vis fler</a>
 </div>
 
 {foreach from=$config.lib.nav key=id item=nav}

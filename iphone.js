@@ -2,15 +2,43 @@ var progressindicator = '<img src="/mobibl/img/progress.gif" id="progress" alt="
 
 function getSearchResults() {
 
-  // alert('før');
+  // Clear the floor for new results
+  $('#searchcontent').empty();
+  // Display progressindicator
   $('#searchformsubmit').append(progressindicator);
+  // Get the query and the code for the library
   var q = $('#q').val();
   var library = $.getUrlVar('lib');
+  // Initialize counter
+  $('#search').data('searchcounter', 0);
+  $('#searchresults').empty();
   // Use dummy: 'true' as argument to glitre/api/ to get back dummy data
-  $.get('/mobibl/glitre/api/', { q: q, library: library, format: 'plugin.mobibl' }, function (html) { $('#searchresults').empty(); $('#searchresults').append(html); $('#progress').remove(); });
+  $.get('/mobibl/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'plugin.mobibl' }, function (html) { 
+  	$('#searchcontent').append(html); 
+  	// Display "more" button
+  	$('#searchmore').show();
+  	var hitssofar = $('#searchresults li').length;
+  	// Display the number of hist shown so far
+  	$('#searchcountto').empty();
+  	$('#searchcountto').append(hitssofar);
+  	// Remove progress indicator
+  	$('#progress').remove(); 
+  });
+  // Clone the searchcounter
+  $('#searchcounter').clone(false).removeAttr("id").addClass('clonedsearchcounter').insertBefore($("#searchmore"));
   // Remove the progress indicator once the search results are loaded
-  $.get('/mobibl/glitre/api/', { q: q, library: library, format: 'plugin.mobiblfull' }, function (html) { $('body').append(html); });
+  $.get('/mobibl/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'plugin.mobiblfull' }, function (html) { 
+  	$('body').append(html); 
+  });
+  // Increment the counter
+  $('#search').data('searchcounter', $('#search').data('searchcounter') + 1);
   return false;
+
+}
+
+function getMoreSearchResults() {
+
+
 
 }
 
@@ -36,8 +64,37 @@ $(document).ready(function(){
 
 	// Perform search
 	$('#search form').submit(getSearchResults);
-
-        // Saving settings triggers the saveSettings function
+	$('#searchmore').click(function() {
+	  var q = $('#q').val();
+	  var library = $.getUrlVar('lib');
+	  // Use dummy: 'true' as argument to glitre/api/ to get back dummy data
+	  $.get('/mobibl/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'plugin.mobibl' }, function (html) { 
+	  	$('#searchresults').append(html); 
+	  	var hitssofar = $('#searchresults li').length;
+	  	// Display the number of hist shown so far
+	  	$('#searchcountto').empty();
+	  	$('#searchcountto').append(hitssofar);
+	        // Remove the old searchcounter (if there is one)
+	        $('.clonedsearchcounter').remove();
+	        // Clone the searchcounter
+	        $('#searchcounter').clone(false).removeAttr("id").addClass('clonedsearchcounter').insertBefore($("#searchmore"));
+	  	// Check if we reached the max number of hits
+	  	if (hitssofar == 10) {
+	  	  // Remove the "more" button
+	  	  $('#searchmore').hide();
+	  	}
+	  	$('#progress').remove(); 
+	  });
+	  // Remove the progress indicator once the search results are loaded
+	  $.get('/mobibl/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'plugin.mobiblfull' }, function (html) { 
+	  	$('body').append(html); 
+	  });
+	  // Increment the counter
+	  $('#search').data('searchcounter', $('#search').data('searchcounter') + 1);
+	  return false;
+	});
+	
+    // Saving settings triggers the saveSettings function
 	$('#settings form').submit(saveSettings);
         $('#settings').bind('pageAnimationStart', loadSettings);
 

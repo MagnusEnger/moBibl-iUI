@@ -21,26 +21,31 @@ along with Glitre.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-function format($records) {
+function format($records, $num_of_records, $first_record, $last_record) {
 
 	// require('File/MARCXML.php');
 	// $records = new File_MARCXML($marcxml, File_MARC::SOURCE_STRING);
 	
-	$out = '<p>Treff: ' . count($records) . '</p>';
-	$list = '';
+	$out = '';
 	$count = 0;
+        if ($first_record == 1) {
+          $out = '<p id="searchcounter">Viser treff 1 til <span id="searchcountto">' . $last_record . '</span> av <span id="searchcountotal">' . $num_of_records . '</span></p>';
+          $out .= '<ul id="searchresults">';
+        }
 	foreach ($records as $rec) {
-		$list .= get_basic_info($rec['marcobj']);
+		$out .= get_basic_info($rec);
 		$count++;
 	}
-	$out = '<p>Treff: ' . $count . '</p>';
-	$out .= '<ul>' . $list . '</ul>';
+        if ($first_record == 1) {
+	  $out .= '</ul>';
+	  // $out .= '<a style="margin:0 10px;color:rgba(0,0,0,.9);" href="#" class="whiteButton" id="searchmorebt">Vis fler</a>';
+        }
 	
 	$ret = array(
 		'data' => $out, 
 		'content_type' => 'text/html'
 	);	
-	return $ret;;
+	return $ret;
 
 }
 

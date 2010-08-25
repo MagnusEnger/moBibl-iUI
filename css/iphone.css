@@ -22,3 +22,8 @@ img {
   overflow: visible;
   white-space: normal;
 }
+
+#searchcounter, .clonedsearchcounter {
+  text-align: center;
+  margin: 0.5em;
+}
