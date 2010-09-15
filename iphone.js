@@ -1,4 +1,4 @@
-var progressindicator = '<img src="/mobibl/img/progress.gif" id="progress" alt="Progress-indicator" />';
+var progressindicator = '<img src="/img/progress.gif" id="progress" alt="Progress-indicator" />';
 
 function getSearchResults() {
 
@@ -13,7 +13,7 @@ function getSearchResults() {
   $('#search').data('searchcounter', 0);
   $('#searchresults').empty();
   // Use dummy: 'true' as argument to glitre/api/ to get back dummy data
-  $.get('/mobibl/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'plugin.mobibl' }, function (html) { 
+  $.get('/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'mobibl' }, function (html) { 
   	$('#searchcontent').append(html); 
   	// Display "more" button
   	$('#searchmore').show();
@@ -27,7 +27,7 @@ function getSearchResults() {
   // Clone the searchcounter
   $('#searchcounter').clone(false).removeAttr("id").addClass('clonedsearchcounter').insertBefore($("#searchmore"));
   // Remove the progress indicator once the search results are loaded
-  $.get('/mobibl/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'plugin.mobiblfull' }, function (html) { 
+  $.get('/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'mobiblfull' }, function (html) { 
   	$('body').append(html); 
   });
   // Increment the counter
@@ -56,7 +56,7 @@ $.jQTouch({
 	icon: 'jqtouch.png',
 	statusBar: 'black-translucent',
 	preloadImages: [
-		'/mobibl/img/progress.gif'
+		'/img/progress.gif'
 		 ]
 });
 
@@ -68,7 +68,7 @@ $(document).ready(function(){
 	  var q = $('#q').val();
 	  var library = $.getUrlVar('lib');
 	  // Use dummy: 'true' as argument to glitre/api/ to get back dummy data
-	  $.get('/mobibl/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'plugin.mobibl' }, function (html) { 
+	  $.get('/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'mobibl' }, function (html) { 
 	  	$('#searchresults').append(html); 
 	  	var hitssofar = $('#searchresults li').length;
 	  	// Display the number of hist shown so far
@@ -86,7 +86,7 @@ $(document).ready(function(){
 	  	$('#progress').remove(); 
 	  });
 	  // Remove the progress indicator once the search results are loaded
-	  $.get('/mobibl/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'plugin.mobiblfull' }, function (html) { 
+	  $.get('/glitre/api/', { q: q, library: library, page: $('#search').data('searchcounter'), format: 'mobiblfull' }, function (html) { 
 	  	$('body').append(html); 
 	  });
 	  // Increment the counter
@@ -117,19 +117,19 @@ $(document).ready(function(){
 				$(this).data('pagecounter', 0);
 		    }
 	        $('#bokhyllaprogresscontainer').append(progressindicator);
-	        $.get('bokhylla/index.php', { page: $(this).data('pagecounter') }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
+	        $.get('/bokhylla/index.php', { page: $(this).data('pagecounter') }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
 	        $(this).data('pagecounter', $(this).data('pagecounter') + 1);
 	        $(this).data('bokhyllainit', true);
 		}
 	});
 	$('#bokhyllamore').click(function() {
   		$('#bokhyllaprogresscontainer').append(progressindicator);
-	    $.get('bokhylla/index.php', { page: $('#bokhylla').data('pagecounter') }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
+	    $.get('/bokhylla/index.php', { page: $('#bokhylla').data('pagecounter') }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
 	    $('#bokhylla').data('pagecounter', $('#bokhylla').data('pagecounter') + 1);
 	});
 	$('#bokhyllarand').click(function() {
   		$('#bokhyllaprogresscontainer').append(progressindicator);
-	    $.get('bokhylla/index.php', { rand: 'true' }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
+	    $.get('/bokhylla/index.php', { rand: 'true' }, function (html) { $('#bokhyllaul').append(html); $('#progress').remove(); });
 	});
 	
 
