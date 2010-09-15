@@ -104,7 +104,14 @@ function get_basic_info($record) {
 		}
 		$out .= '</ul>';
 	}
-
+	// BIBSYS
+        if ($record->getField("852") && $record->getField("852")->getSubfield("a")) {
+		$out .= '<h2>Eksemplarer:</h2><ul>';
+		foreach ($record->getFields("852") as $item) {
+			$out .= '<li>'. marctrim($item->getSubfield("a")) . ' ' . marctrim($item->getSubfield("a")) . ' ' . marctrim($item->getSubfield("c")) . '</li>' . "\n";
+		}
+		$out .= '</ul>';
+	}
     
     // Notes
     $notes = $record->getFields('5..', true);
