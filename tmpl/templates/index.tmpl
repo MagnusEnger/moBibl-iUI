@@ -9,8 +9,8 @@
 		{foreach from=$config.lib.nav key=id item=nav}
 		<li class="arrow"><a href="#{$config.lib.lib}_{$id}">{$nav.title}</a></li>
 		{/foreach}
-		<li class="arrow"><a href="#choose">Velg bibliotek</a></li>
 		<li class="arrow"><a href="#bokhylla">Bokhylla</a></li>
+		<li class="arrow"><a href="#choose">Bytt bibliotek</a></li>
 		{if $config.debug}
 		<li class="arrow"><a href="#debug">Debug</a></li>
 		{/if}

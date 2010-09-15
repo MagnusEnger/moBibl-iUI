@@ -128,7 +128,7 @@ function get_basic_info($record) {
     
     $out .= '<p><a style="margin:0 10px;color:rgba(0,0,0,.9)" href="#" class="whiteButton goback">Tilbake</a></p>';
     
-    $out .= '<h2>Debug</h2><div class="content"><pre>' . $record->__toString() . '</pre></div>';
+    // $out .= '<h2>Debug</h2><div class="content"><pre>' . $record->__toString() . '</pre></div>';
     
     $out .= '</div></div>';
    	
