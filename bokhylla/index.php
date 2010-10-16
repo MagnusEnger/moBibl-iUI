@@ -13,8 +13,15 @@ $offset = $offset * $per_page;
 
 $tmparray = array_slice($bokhylla, $offset, $per_page);
 
+if (empty($_GET['page'])) {  
+	echo('<ul id="bokhylla" title="Bokhylla.no">');
+}
 foreach ($tmparray as $line) {
 	echo($line);
 }
-
+$next = $offset + 1;
+echo('<li><a href="/bokhylla/?page=' . $next . '" target="_replace">Vis flere</a></li>');
+if (empty($_GET['page'])) {  
+	echo('</ul>');
+}
 ?>

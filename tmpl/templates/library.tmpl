@@ -1,0 +1,49 @@
+<div id="{$config.lib.lib}" title="{$config.lib.name_short}" class="panel">
+<h2>{$config.lib.name}</h2>
+<ul>
+	<li><a href="#{$config.lib.lib}_search">Søk i katalogen</a></li>
+	{foreach from=$config.lib.nav key=id item=nav}
+	<li><a href="?={$config.lib.lib}_{$id}">{$nav.title}</a></li>
+	{/foreach}
+	<li><a href="/bokhylla/">Bokhylla</a></li>
+	<li><a href="#choose">Bytt bibliotek</a></li>
+	{if $config.debug}
+	<li><a href="?test=debug">Debug</a></li>
+	{/if}
+</ul>
+{$config.lib.frontpage}
+</div>
+
+<div id="{$config.lib.lib}_search" title="Søk" class="panel">
+<form action="/glitre/api/" method="GET">
+    <fieldset>
+        <label>Navn, emne, ord i tittel:</label>
+        <input id="artist" type="text" name="q"/>
+        <input type="hidden" name="library" value="{$config.lib.lib}" />
+        <input type="hidden" name="format" value="mobibl" />
+    </fieldset>
+</form>
+</div>
+
+{*
+foreach from=$config.lib.nav key=id item=nav}
+<div id="{$config.lib.lib}_{$id}" class="{$nav.type}" title="{$nav.title}">
+	<div class="toolbar">
+	<h1></h1>
+	<a class="button back" href="#">Tilbake</a>
+	</div>
+        <div id="feedprogresscontainer"></div>
+</div>
+{/foreach
+*}
+
+{if $config.debug}
+<div id="debug" class="section">
+	<div class="toolbar">
+	<h1>Debug</h1>
+	<a class="button back" href="#">Tilbake</a>
+	</div>
+	<div>
+	</div>
+</div>
+{/if}

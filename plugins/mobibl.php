@@ -29,15 +29,16 @@ function format($records, $num_of_records, $first_record, $last_record) {
 	$out = '';
 	$count = 0;
         if ($first_record == 1) {
-          $out = '<p id="searchcounter">Viser treff 1 til <span id="searchcountto">' . $last_record . '</span> av <span id="searchcountotal">' . $num_of_records . '</span></p>';
-          $out .= '<ul id="searchresults">';
+          // $out = '<p id="searchcounter">Viser treff 1 til <span id="searchcountto">' . $last_record . '</span> av <span id="searchcountotal">' . $num_of_records . '</span></p>';
+          // $out .= '<ul id="searchresults">';
+          $out = '<div id="results" title="Resultater" class="panel"><ul>';
         }
 	foreach ($records as $rec) {
 		$out .= get_basic_info($rec);
 		$count++;
 	}
         if ($first_record == 1) {
-	  $out .= '</ul>';
+	  $out .= '</ul></div>';
 	  // $out .= '<a style="margin:0 10px;color:rgba(0,0,0,.9);" href="#" class="whiteButton" id="searchmorebt">Vis fler</a>';
         }
 	
@@ -65,7 +66,8 @@ function get_basic_info($record) {
 	
 	$id = md5($_GET['library'] . $bibid);
 
-    $out = '<li class="arrow flip"><a class="searchresult" href="#' . $id . '">';
+    // $out = '<li class="arrow flip"><a class="searchresult" href="#' . $id . '">';
+    $out = '<li><a href="#' . $id . '">';
     
     // Title
     if ($record->getField("245") && $record->getField("245")->getSubfield("a")) {

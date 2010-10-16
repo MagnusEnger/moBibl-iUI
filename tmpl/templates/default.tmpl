@@ -1,17 +1,26 @@
 {include file='html_header.tmpl' title=$config.lib.name theme="apple"}
 
-<div id="choose" class="section">
-	<div class="toolbar">
-	<h1>moBibl <sup>beta</sup></h1>
-	</div>
-	<div>
-        <h2>Velg bibliotek</h2>
-        <ul>
-        {foreach from=$libraries key=lid item=lib}
-          <li><a href="?lib={$lid}">{$lib.name}</a></li>
-        {/foreach}
-        </ul>
-	</div>
+<div id="choose" title="Velg bibliotek" class="panel">
+<ul>
+{foreach from=$libraries key=lid item=lib}
+  <li><a href="?lib={$lid}">{$lib.name}</a></li>
+{/foreach}
+</ul>
 </div>
+
+<div id="old_search" title ="Søk i katalogen" class="panel">
+	<form method="post" id="searchform">
+	<ul>
+	<li><input placeholder="Forfatter, tittel, emne..." type="text" id="q" name="q" value="" /></li>
+	<li id="searchformsubmit"><input type="submit" class="submit" value="Søk" /></li>
+	</ul>
+	</form>
+</div>
+
+{*
+foreach from=$libraries key=k item=v}
+<div id="{$k}" class="panel library"></div>
+{/foreach
+*}
 
 {include file='html_footer.tmpl'}

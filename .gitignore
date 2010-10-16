@@ -11,6 +11,10 @@ config.php
 # Ignore alle the Glitre files
 glitre/*
 
+# Ignore JS libraries
+jqtouch/
+iui/
+
 # Ignore anything that starts with an underscore
 _*
 

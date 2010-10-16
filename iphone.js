@@ -1,4 +1,5 @@
 var progressindicator = '<img src="/img/progress.gif" id="progress" alt="Progress-indicator" />';
+var curlib;
 
 function getSearchResults() {
 
@@ -36,23 +37,7 @@ function getSearchResults() {
 
 }
 
-function getMoreSearchResults() {
-
-
-
-}
-
-function saveSettings() {
-  localStorage.theme = $('#theme').val();
-  jQT.goBack();
-  return false;
-}
-
-function loadSettings() {
-  $('#theme').val(localStorage.theme);
-}
-
-$.jQTouch({
+var jQT = new $.jQTouch({
 	icon: 'jqtouch.png',
 	statusBar: 'black-translucent',
 	preloadImages: [
@@ -61,6 +46,18 @@ $.jQTouch({
 });
 
 $(document).ready(function(){
+
+	// Change library
+	$('.library').bind('pageAnimationEnd', function(e, info){
+		curlib = $(this).attr('href').substring(1);
+		if (!$(this).data('loaded')) {
+			// TODO: Check if this library hs already been added
+			$.get('index.php', { lib: curlib }, function (html) { 
+				$('#' + curlib).append(html);
+				$(this).data('loaded', true);
+			});
+		}
+	});
 
 	// Perform search
 	$('#search form').submit(getSearchResults);
@@ -93,10 +90,6 @@ $(document).ready(function(){
 	  $('#search').data('searchcounter', $('#search').data('searchcounter') + 1);
 	  return false;
 	});
-	
-    // Saving settings triggers the saveSettings function
-	$('#settings form').submit(saveSettings);
-        $('#settings').bind('pageAnimationStart', loadSettings);
 
         // Feeds
 	$('.feed').bind('pageAnimationEnd', function(e, info){
